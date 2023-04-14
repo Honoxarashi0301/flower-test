@@ -1,3 +1,4 @@
+import os
 import warnings
 from collections import OrderedDict
 
@@ -175,7 +176,7 @@ class FlowerClient(fl.client.NumPyClient):
 
 # Start Flower client
 fl.client.start_numpy_client(
-    server_address="127.0.0.1:8080",
+    server_address=os.environ.get("flower_server"),
     client=FlowerClient(),
     grpc_max_message_length = 1024000000,
 )
